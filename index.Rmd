@@ -1,0 +1,28 @@
+---
+output:
+  html_document
+---
+
+```{r, include=FALSE, echo = FALSE}
+data1 <- readRDS("listas.rds")
+```
+
+# Listas de Candidatos - Legislativas 2022
+
+Listas de Candidatos definitivamente admitidas (disponíveis 15 dos 22 círculos eleitorais).
+
+Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022)
+
+
+```{r, eval = TRUE, echo = F}
+DT::datatable(data1, rownames = F)
+```
+
+
+[Calculadora Legislativas 2022](https://jrdaniel.shinyapps.io/paragrafo)
+
+[Ko-fi](https://ko-fi.com/jrdaniel38137)
+
+[JRDANIEL](https://www.linkedin.com/in/jo%C3%A3o-r-daniel-5a164a211)
+
+[GitHub](https://github.com/joaordaniel/listas_legislativas2022): repositório com a base de dados em formato .csv e .rds, e o script (R) de extração dos dados dos ficheiros .pdf da CNE
