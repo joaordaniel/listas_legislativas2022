@@ -76,7 +76,7 @@ data1 <- data1 %>%
                                                    unique(data1$Círculo),
                                                    c("Aveiro", "Beja", "Bragança", "Castelo Branco",
                                                      "Évora", "Faro", "Guarda", "Leiria", "Portalegre",
-                                                     "Porto", "Santarém", "Setubal", "Vila Real", "Viseu",
+                                                     "Porto", "Santarém", "Setúbal", "Vila Real", "Viseu",
                                                      "Madeira", "Açores"), vectorize_all = FALSE),
          Partido = stringi::stri_replace_all_fixed(Partido,
                                                    partidos$original,
@@ -86,4 +86,4 @@ data1 <- data1 %>%
 #saveRDS(data1, "listas.rds")
 #write.csv(data1, "listas.csv", row.names = F)      
 
-DT::datatable(data1, rownames = F)
+#DT::datatable(data1, rownames = F)

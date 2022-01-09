@@ -9,9 +9,11 @@ data1 <- readRDS("listas.rds")
 
 # Listas de Candidatos - Legislativas 2022
 
-Listas de Candidatos definitivamente admitidas (disponíveis 15 dos 22 círculos eleitorais).
+Listas de Candidatos definitivamente admitidas.
 
 Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022)
+
+(disponíveis 16 dos 22 círculos eleitorais)
 
 
 ```{r, eval = TRUE, echo = F}
