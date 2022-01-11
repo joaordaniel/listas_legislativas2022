@@ -11,10 +11,16 @@ data1 <- readRDS("listas.rds")
 
 Listas de Candidatos definitivamente admitidas.
 
-Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022)
+Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022) (11/01/2022: disponíveis 19 dos 22 círculos eleitorais)
 
-(11/01/2022: disponíveis 19 dos 22 círculos eleitorais)
 
+<br>
+Exemplos de pesquisa (search box):
+
+*Search: 01 porto - devolve os cabeças de lista pelo círculo eleitoral do Porto*  
+*Search: 01 porto livre - devolve o cabeça de lista do Livre pelo círculo eleitoral do Porto*
+
+<br>
 
 ```{r, eval = TRUE, echo = F}
 DT::datatable(data1, rownames = F)

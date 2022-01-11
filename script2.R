@@ -90,7 +90,10 @@ data1 <- data1 %>%
          Partido = stringi::stri_replace_all_fixed(Partido,
                                                    partidos$original,
                                                    partidos$corrigido,
-                                                   vectorize_all = FALSE))
+                                                   vectorize_all = FALSE),
+         Ordem = sprintf("%02d", Ordem))
+
+
 
 #saveRDS(data1, "listas.rds")
 #write.csv(data1, "listas.csv", row.names = F)      
