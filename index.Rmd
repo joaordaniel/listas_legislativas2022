@@ -11,7 +11,7 @@ data1 <- readRDS("listas.rds")
 
 Listas de Candidatos definitivamente admitidas.
 
-Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022) (11/01/2022: disponíveis 19 dos 22 círculos eleitorais)
+Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022) (12/01/2022: disponíveis 21 dos 22 círculos eleitorais - falta Lisboa)
 
 
 <br>

@@ -20,7 +20,9 @@ filenames <- c("https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/lista
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_17_circulo_eleitoral_vila_real.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_18_circulo_eleitoral_viseu.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_30_circulo_eleitoral_ra_madeira.pdf",
-"https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_40_circulo_eleitoral_ra_acores.pdf")
+"https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_40_circulo_eleitoral_ra_acores.pdf",
+"https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_98_circulo_eleitoral_europa.pdf",
+"https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_99_circulo_eleitoral_fora_da_europa.pdf")
 
 extract_data <- function(x){
   temp <- pdftools::pdf_text(x)
@@ -81,12 +83,31 @@ data1 <- do.call(rbind.data.frame, data1)
 partidos <- read.csv("partidos.csv", header = T, sep = ";")
 
 data1 <- data1 %>%
-  mutate(Círculo = stringi::stri_replace_all_fixed(Círculo,
-                                                   unique(data1$Círculo),
-                                                   c("Aveiro", "Beja", "Braga", "Bragança", "Castelo Branco", "Coimbra",
-                                                     "Évora", "Faro", "Guarda", "Leiria", "Portalegre",
-                                                     "Porto", "Santarém", "Setúbal", "Viana do Castelo", "Vila Real", "Viseu",
-                                                     "Madeira", "Açores"), vectorize_all = FALSE),
+  mutate(Círculo = stringr::str_replace_all(Círculo,
+                                             c(
+                                               "aveiro.pdf" = "Aveiro",
+                                               "beja.pdf" = "Beja",
+                                               "braga.pdf" = "Braga",
+                                               "braganca.pdf" = "Bragança",
+                                               "castelo_branco.pdf" = "Castelo Branco",
+                                               "coimbra.pdf" = "Coimbra",
+                                               "evora.pdf" = " Évora",
+                                               "faro.pdf" = "Faro",
+                                               "guarda.pdf" = "Guarda",
+                                               "leiria.pdf" = "Leiria",
+                                               "portalegre.pdf" = "Portalegre",
+                                               "porto.pdf" = "Porto",
+                                               "santarem.pdf" = "Santarém",
+                                               "setubal.pdf" = "Setúbal",
+                                               "viana_castelo.pdf" = "Viana do Castelo",
+                                               "vila_real.pdf" = "Vila Real",
+                                               "viseu.pdf" = "Viseu",
+                                               "ra_madeira.pdf" = "Madeira",
+                                               "ra_acores.pdf" = "Açores",
+                                               "fora_da_europa.pdf" = "Fora da Europa",
+                                               "europa.pdf" = "Europa"
+                                               
+                                             )),
          Partido = stringi::stri_replace_all_fixed(Partido,
                                                    partidos$original,
                                                    partidos$corrigido,
