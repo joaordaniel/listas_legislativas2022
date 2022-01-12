@@ -11,7 +11,7 @@ data1 <- readRDS("listas.rds")
 
 Listas de Candidatos definitivamente admitidas.
 
-Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022) (11/01/2022: disponíveis 19 dos 22 círculos eleitorais)
+Fonte: [Comissão Nacional de Eleições](https://www.cne.pt/content/eleicoes-para-assembleia-da-republica-2022) (12/01/2022: disponíveis 21 dos 22 círculos eleitorais - falta Lisboa)
 
 
 <br>
@@ -39,7 +39,6 @@ DT::datatable(data1, rownames = F)
 
 [Calculadora Legislativas 2022](https://jrdaniel.shinyapps.io/paragrafo)
 
-[JRDANIEL](https://www.linkedin.com/in/jo%C3%A3o-r-daniel-5a164a211)
 
 [GitHub](https://github.com/joaordaniel/listas_legislativas2022): repositório com a base de dados em formato .csv e .rds, e o script (R) de extração dos dados dos ficheiros .pdf da CNE
 
