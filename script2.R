@@ -33,12 +33,12 @@ extract_data <- function(x){
   temp$partido <- grepl("^[A-Z]+", temp$mine) & (grepl("–", temp$mine) | grepl("-", temp$mine)) &
     !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
     !grepl("Ana Mafalda Sim-Sim da Cunha Neves", temp$mine) &
-    !grepl("Ana Maria Chélo de Amaral – PCP", temp$mine) &
     !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
     !grepl("Ana Micaela Pedrosa-Augusto", temp$mine) &
     !grepl("Independente", temp$mine) &
-    !grepl("Jakilson Jorge Ramos Pereira – PCP", temp$mine)
-    
+    !grepl("PCP$", temp$mine) &
+    !grepl("PEV$", temp$mine)
+  
   temp <- temp[temp$mine != "", ]
   temp <- temp[-(1:3), ]
   temp$candidatos_e <- grepl("Efetivos", temp$mine)
