@@ -12,6 +12,7 @@ filenames <- c("https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/lista
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_08_circulo_eleitoral_faro.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_09_circulo_eleitoral_guarda.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_10_circulo_eleitoral_leiria.pdf",
+"https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_11_circulo_eleitoral_lisboa.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_12_circulo_eleitoral_portalegre.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_13_circulo_eleitoral_porto.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_14_circulo_eleitoral_santarem.pdf",
@@ -31,9 +32,10 @@ extract_data <- function(x){
   temp <- data.frame(mine = unlist(temp))
   temp$partido <- grepl("^[A-Z]+", temp$mine) & (grepl("–", temp$mine) | grepl("-", temp$mine)) &
     !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
-    !grepl("Abel Filipe Marques Pereira – Independente", temp$mine) &
-    !grepl("Cristina Paula Silva Oliveira – Independente", temp$mine) &
-    !grepl("Marta Raquel dos Santos Macedo – Independente", temp$mine)
+    !grepl("Ana Mafalda Sim-Sim da Cunha Neves", temp$mine) &
+    !grepl("Ana Maria Chélo de Amaral – PCP", temp$mine) &
+    !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
+    !grepl("Ana Micaela Pedrosa-Augusto", temp$mine)
     
   temp <- temp[temp$mine != "", ]
   temp <- temp[-(1:3), ]
@@ -95,6 +97,7 @@ data1 <- data1 %>%
                                                "faro.pdf" = "Faro",
                                                "guarda.pdf" = "Guarda",
                                                "leiria.pdf" = "Leiria",
+                                               "lisboa.pdf" = "Lisboa",
                                                "portalegre.pdf" = "Portalegre",
                                                "porto.pdf" = "Porto",
                                                "santarem.pdf" = "Santarém",
