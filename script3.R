@@ -25,27 +25,38 @@ filenames <- c("https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/lista
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_98_circulo_eleitoral_europa.pdf",
 "https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_99_circulo_eleitoral_fora_da_europa.pdf")
 
-#test <- ("https://www.cne.pt/sites/default/files/dl/eleicoes/2022_ar/listas_candidatos/2022ar_listas_candidatos_15_circulo_eleitoral_setubal.pdf")
+
+
 
 extract_data <- function(x){
   temp <- pdftools::pdf_text(x)
   temp_circ <- sub(".*circulo_eleitoral_", "", x)
   temp <- stringr::str_split(temp, "\n")
   temp <- data.frame(mine = unlist(temp))
-  temp$partido <- grepl("[A-Z]", temp$mine) & (grepl("–", temp$mine) | grepl("-", temp$mine) | grepl("PPD", temp$mine)) &
+  temp$mine <- stringr::str_squish(temp$mine)
+  temp$partido <- grepl("^[A-Z]+", temp$mine) & (grepl("–", temp$mine) | grepl("-", temp$mine)) &
     !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
     !grepl("Ana Mafalda Sim-Sim da Cunha Neves", temp$mine) &
-    !grepl("Miguel Almeida Corte-Real Gomes", temp$mine) &
+    !grepl("Ana Filipa Alfaia Abraham-James", temp$mine) &
+    !grepl("Inês Castel-Branco Marques Vidal", temp$mine) &
+    !grepl("Maria Isabel Eusébio Coelho-Marques", temp$mine) &
+    !grepl("Maria Isabel Gimenez-Salinas Moreira Ribeiro", temp$mine) &
+    !grepl("Maria Leonor Santos Pintado da Silva Castel-Branco", temp$mine) &
+    !grepl("Mykhaylo-Roman Shemliy", temp$mine) &
+    !grepl("Pedro Figueiras dos Santos Martins-Mourão", temp$mine) &
     !grepl("Ana Micaela Pedrosa-Augusto", temp$mine) &
+    !grepl("José Luís Silva Chá-Chá", temp$mine) &
     !grepl("Independente", temp$mine) &
     !grepl("PCP$", temp$mine) &
-    !grepl("PEV$", temp$mine)
+    !grepl("PEV$", temp$mine) &
+    !grepl("PPD/PSD$", temp$mine)
   
   temp <- temp[temp$mine != "", ]
   temp <- temp[-(1:3), ]
   temp$candidatos_e <- grepl("Efetivos", temp$mine)
   temp$candidatos_s <- grepl("Suplentes", temp$mine)
-  
+
+  #PPD/PSD.CDS-PP - MADEIRA PRIMEIRO
   for(i in 1:nrow(temp)){
     temp$partido2[i] <- ifelse(temp$partido[i] == TRUE,
                                   temp$mine[i],
@@ -81,7 +92,7 @@ extract_data <- function(x){
   temp
 }
 
-#data1 <- lapply(test, extract_data)
+
 
 data1 <- lapply(filenames, extract_data)
 data1 <- do.call(rbind.data.frame, data1)
